@@ -1,22 +1,17 @@
-type IImages = {
-  [key: string]: string[];
-};
+// @ts-ignore
+import styles from "./Collection.module.scss";
+import { ICollection } from "../../types/ICollection";
 
-interface ICollection {
-  name: string;
-  images: IImages;
-}
-
-export const Collection = ({ name, images }: ICollection) => {
+export const Collection = ({ name, photos, category }: ICollection) => {
   return (
-    <div className="collection">
-      <img className="collection__big" src={images[0]} alt="Item" />
-      <div className="collection__bottom">
-        <img className="collection__mini" src={images[1]} alt="Item" />
-        <img className="collection__mini" src={images[2]} alt="Item" />
-        <img className="collection__mini" src={images[3]} alt="Item" />
+    <div className={styles.container}>
+      <img className={styles.collection__big} src={photos[0]} alt="Item" />
+      <div className={styles.collection__bottom}>
+        <img className={styles.collection__mini} src={photos[1]} alt="Item" />
+        <img className={styles.collection__mini} src={photos[2]} alt="Item" />
+        <img className={styles.collection__mini} src={photos[3]} alt="Item" />
       </div>
-      <h4>{name}</h4>
+      <div className={styles.title}>{name}</div>
     </div>
   );
 };
