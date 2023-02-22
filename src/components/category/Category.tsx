@@ -9,7 +9,7 @@ type ITypeItem = {
 interface ICategory {
   category: ITypeItem[];
   categoryId: number;
-  onClick: () => void;
+  onClick: (idx: number) => void;
   value: string;
   onChange: (e: any) => void;
 }

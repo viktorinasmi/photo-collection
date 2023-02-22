@@ -2,12 +2,24 @@
 import styles from "./Pagination.module.scss";
 import cn from "classnames";
 
-export const Pagination = () => {
+interface IPagination {
+  page: number;
+  onClick: (idx: number) => void;
+}
+
+export const Pagination = ({ page, onClick }: IPagination) => {
   return (
     <div className={styles.container}>
-      <div className={styles.pagination}>1</div>
-      <div className={cn(styles.pagination, styles.pagination_active)}>2</div>
-      <div className={styles.pagination}>3</div>
+      {[...Array(5)].map((_, i) => (
+        <div
+          onClick={() => onClick(i + 1)}
+          className={cn(styles.pagination, {
+            [styles.pagination_active]: page === i + 1,
+          })}
+        >
+          {i + 1}
+        </div>
+      ))}
     </div>
   );
 };
