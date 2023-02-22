@@ -8,29 +8,42 @@ type ITypeItem = {
 
 interface ICategory {
   category: ITypeItem[];
-  categoryTab: string;
-  onClick: (label: string) => void;
+  categoryId: number;
+  onClick: () => void;
+  value: string;
+  onChange: (e: any) => void;
 }
 
-export const Category = ({ category, categoryTab, onClick }: ICategory) => {
+export const Category = ({
+  category,
+  categoryId,
+  onClick,
+  value,
+  onChange,
+}: ICategory) => {
   return (
     <div className={styles.container}>
       <>
-        {category.map((item) => {
+        {category.map((item, i) => {
           return (
             <div
               key={item.label}
               className={cn(styles.wrapper, {
-                [styles.wrapper_active]: item.label === categoryTab,
+                [styles.wrapper_active]: categoryId === i,
               })}
-              onClick={() => onClick(item.label)}
+              onClick={() => onClick(i)}
             >
               {item.label}
             </div>
           );
         })}
       </>
-      <input className={styles.input} placeholder="Поиск по названию" />
+      <input
+        value={value}
+        onChange={onChange}
+        className={styles.input}
+        placeholder="Поиск по названию"
+      />
     </div>
   );
 };

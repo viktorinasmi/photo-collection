@@ -1,5 +1,5 @@
 export interface ICollection {
-  category?: number;
+  index?: number;
   name: string;
   photos: string[];
 }

@@ -2,7 +2,7 @@
 import styles from "./Collection.module.scss";
 import { ICollection } from "../../types/ICollection";
 
-export const Collection = ({ name, photos, category }: ICollection) => {
+export const Collection = ({ name, photos, index }: ICollection) => {
   return (
     <div className={styles.container}>
       <img className={styles.collection__big} src={photos[0]} alt="Item" />
